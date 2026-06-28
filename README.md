@@ -70,6 +70,11 @@ auto-loaded). For Claude Code, add to your `CLAUDE.md`:
 @.claude-kit/rules/workflow.md
 ```
 
+**Skills** (`skills/*.md`) are invokable commands, not rules - the setup skill does **not**
+install them. To use them, copy each into a directory your agent scans (Claude Code: a
+`SKILL.md` per skill under `~/.claude/skills/<name>/` for all projects, or `.claude/skills/`
+per-project). Once placed, they're invokable as `/<name>` everywhere that dir applies.
+
 **2. A foreign or work repo (the merge skill).** When the target already has its own
 `CLAUDE.md` / `AGENTS.md` / rules, do **not** blast over them. Run the integration skill in
 [`install/claude-kit-setup.md`](install/claude-kit-setup.md): it inventories what's there, classifies each kit item
