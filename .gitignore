@@ -1,0 +1,4 @@
+# Local-only scrub map for kit-sync - holds real names/infra, NEVER commit
+.kit-scrub.local.json
+# Adopter lockfiles (per-target, not part of the kit)
+.claude-kit.lock
