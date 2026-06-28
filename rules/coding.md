@@ -4,6 +4,15 @@
 interpretations -> present them, don't silently pick one. A simpler approach exists -> say so,
 and push back when warranted. Unclear -> stop, name it, ask.
 
+**Rules beat local style (always; binds everyone, no exceptions).** A standing rule outranks the
+surrounding code's habits - matching existing style NEVER means copying a violation. The
+neighbours carry a what-comment, a magic literal, a single-use local? Write the COMPLIANT
+version, don't mimic theirs. In doubt, apply the rule. This is unconditional and identical for
+every session and every sub-agent: no file's house style, no "it's a template/starter/example",
+no deadline overrides a rule. Before calling a change done, self-check the lines YOU wrote
+against these rules - the comment you'd delete in review is the one not to write. The rules are
+the source of truth; reliability means they hold no matter who writes the code or where.
+
 **Decision rigor (prove it, don't assert it).** For non-trivial, foundational, or
 hard-to-reverse decisions: pressure-test with a side agent *before* deciding; for the most
 critical, dual-verify with two separate agents and resolve any disagreement against ground
@@ -20,7 +29,9 @@ remembers - delete it). Remove anything your change leaves orphaned. Pre-existin
 code -> flag it, don't delete it (see Surgical).
 
 **Surgical.** Touch only what's asked; clean up only your own mess. Don't improve or refactor
-adjacent code, comments, or formatting. Match existing style even if you'd do it differently.
+adjacent code, comments, or formatting. Match existing style even if you'd do it differently -
+but never copy a rule violation (see "Rules beat local style"): style-matching is about
+formatting and idiom, not adopting a neighbour's what-comment or magic literal.
 Unrelated dead code -> mention it, don't delete it. Remove only the imports/vars your change
 made unused.
 
