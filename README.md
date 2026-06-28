@@ -11,9 +11,11 @@ resume-ready, plus a few battle-tested workspace patterns.
 rules/
   communication.md   - terse-by-default replies, decisions-as-table, background-task ETAs, writing style
   coding.md          - think-first, simplicity, surgical edits, DRY, no magic strings, self-documenting,
-                       decision rigor, minimal surface, visual proof, dates, rule capture + placement
+                       tool-use efficiency, decision rigor, minimal surface, visual proof, dates, rule capture
   values.md          - privacy-first, quality bar, show-don't-tell, keep-VCS-current
   context.md         - resume-ready docs + snapshot-when-large protocol
+  security.md        - secret handling, untrusted-content / prompt-injection, no exfil
+  workflow.md        - act-vs-ask boundaries (Always/Ask/Never), git + commit hygiene, verification
 patterns/
   agent-tooling-standards.md   - agent-facing API design, visual-verify protocol, AST-over-regex
   workspace-map-playbook.md    - a generated AGENTS.md router kept honest by a --check hook
@@ -22,6 +24,9 @@ install/
   SETUP.md           - merge the kit INTO a target project (adopt the rules/patterns)
   audit.md           - lint a project's OWN skills/docs against the kit rules + propose lean rewrites
   kit-sync.md        - (maintainers) promote your evolving local config back into the kit, scrubbed
+examples/
+  AGENTS.md          - a filled workspace-map router (with an Always/Ask/Never boundaries block)
+  BOOT.md            - a filled boot-brief digest
 ```
 
 ## Scope: principles, adapt to your project
@@ -58,6 +63,8 @@ auto-loaded). For Claude Code, add to your `CLAUDE.md`:
 @.claude-kit/rules/communication.md
 @.claude-kit/rules/values.md
 @.claude-kit/rules/context.md
+@.claude-kit/rules/security.md
+@.claude-kit/rules/workflow.md
 ```
 
 **2. A foreign or work repo (the merge skill).** When the target already has its own

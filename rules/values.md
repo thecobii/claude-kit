@@ -15,6 +15,7 @@ rough - reach for the polished option without being asked.
 *shape* (a mockup or an IA proposal) before any re-platform or large rework. Never rebuild on
 spec alone.
 
-**Keep version control current (standing authorization).** Commit and push every shipped change
-to its remote without being asked; the remote should always be up to date. Repos with no remote:
-commit locally.
+**Keep version control current.** Commit every shipped change with a clear message so history
+stays meaningful and work is recoverable. On a repo you solely own, keep its remote current; on a
+shared or team repo, follow its push and review norms - don't push to a protected or shared branch
+without sign-off. See `workflow.md` for commit + push hygiene.

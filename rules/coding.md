@@ -22,6 +22,11 @@ made unused.
 **Goal-driven.** Turn tasks into verifiable goals; give a brief plan with a verification
 checkpoint per step. Don't report done until it's verified working.
 
+**Tool use (be cheap).** Consult the workspace map / boot-brief before grepping to rediscover
+layout. Batch independent reads and run independent tool calls in parallel, not one-by-one. Don't
+re-read a file already in context. Prefer one targeted read or search over many broad ones.
+Structural code queries -> an AST tool, not regex (see `patterns/agent-tooling-standards.md`).
+
 **DRY & tight (non-negotiable).** Verbose or duplicated code is a defect, not a style. Reuse
 beats rewrite - check the shared design system, shared contracts, and existing utils before
 writing new code; repeated logic -> one named helper. Fewest lines that read clearly; if it
