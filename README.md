@@ -18,8 +18,12 @@ rules/
   workflow.md        - act-vs-ask boundaries (Always/Ask/Never), git + commit hygiene, verification
 patterns/
   agent-tooling-standards.md   - agent-facing API design, visual-verify protocol, AST-over-regex
-  workspace-map-playbook.md    - a generated AGENTS.md router kept honest by a --check hook
+  workspace-map-playbook.md    - the AGENTS.md router: generate (ownership-scoped) + inject + keep honest
   boot-brief.md                - distill standing docs into one read-first digest with a staleness check
+scripts/
+  map-repo.sh              - portable (bash+git, zero install) AGENTS.md generator: ownership-scoped, skills-seeded, --check
+hooks/
+  inject-workspace-map.sh / .ps1 - SessionStart hook: inject the cwd's AGENTS.md chain into context (the "reader")
 install/
   claude-kit-setup.md      - merge the kit INTO a target project (adopt the rules/patterns)
   claude-kit-audit.md      - lint a project's OWN skills/docs against the kit rules + propose lean rewrites
@@ -27,6 +31,7 @@ install/
 skills/
   claude-kit-brainstorm.md - decision cascade: complexity gate -> fan by angle -> synthesize -> decision table
   claude-kit-verify-rules.md - strict rules-compliance gate for CODE: checklist vs rules/*, every finding cites a rule
+  claude-kit-map-repo.md   - generate/refresh an AGENTS.md scoped to the part of a repo you own (git history + your skills)
 examples/
   AGENTS.md          - a filled workspace-map router (with an Always/Ask/Never boundaries block)
   BOOT.md            - a filled boot-brief digest

@@ -134,12 +134,10 @@ A portable Node reference is in section 7 below.
   reliably boot the same way each time; otherwise pair it with the pre-commit hook.
 
 ### 5.3 Make the agent consume it
-One line in your agent's standing instructions / boot routine:
-> "Start every session by reading `<root>/AGENTS.md` - it routes to everything. Don't grep to
-> rediscover the layout."
-
-In a team, this goes in the repo's `AGENTS.md`/`CLAUDE.md` convention file and/or the shared agent
-config. For a solo setup, put it in the global agent rules or the boot routine.
+A passive rule ("read `AGENTS.md` first") is necessary but **not sufficient** - in practice agents
+skip it and grep-storm anyway. The robust fix is to **inject the map into context automatically**,
+so reading it is not a choice. See section 9 (the SessionStart inject hook). Keep the passive line
+too, in the repo's `AGENTS.md`/`CLAUDE.md` convention file and/or shared agent config.
 
 ### 5.4 Retire the old map
 If a hand-written map already exists, don't delete its *prose* (ownership/infra notes are
@@ -271,6 +269,52 @@ writeFileSync(OUT, body); console.log(`[OK] wrote AGENTS.md (${rows.length} repo
       language: system
       pass_filenames: false
 ```
+
+---
+
+## 9. Active injection, ownership scoping, and the skill (the install-free path)
+
+Sections 1-8 cover the *file* + a Node generator. This section adds the three things that make it
+actually fire for the *main* agent, work in *partial-ownership* repos, and ship install-free. The
+kit ships runnable versions: `scripts/map-repo.sh`, `hooks/inject-workspace-map.{sh,ps1}`, and the
+`claude-kit-map-repo` skill. All are **bash + git, zero `npm install`** (runs on macOS + Windows
+Git Bash) - important where corporate policy forbids installing dependencies.
+
+### 9.1 Inject the map (the reader) - the fix for "the agent skips it"
+A **global SessionStart hook** prints the cwd's `AGENTS.md` to stdout; Claude Code injects a
+SessionStart hook's stdout as session context, so the map is loaded *before* the first tool call -
+no choice to skip. It walks root->cwd collecting every `AGENTS.md` (nearest-wins cascade) and
+appends a 2-line search protocol (ast-grep for structural, ripgrep for text). No map -> no-op.
+Wire it once in global settings (`hooks.SessionStart` -> `bash .../inject-workspace-map.sh`).
+This is the only piece that's tool-specific - Claude Code's native file is `CLAUDE.md`, so the hook
+is what makes it use the `AGENTS.md` standard your other tools read natively. Keep a thin
+`CLAUDE.md -> AGENTS.md` pointer so both agree.
+
+### 9.2 Three levels (mono- AND multi-repo)
+`AGENTS.md` nests; agents read the nearest file up the tree, closest wins. So:
+- **workspace/global** map (parent of several repos) - cross-repo connections + a list/links. This
+  is the answer for a *multi-repo* system: run the generator at the parent to get a global map.
+- **repo** map - one repo, scoped to your part.
+- **package** map - nested inside a monorepo, per package.
+The inject hook loads the whole root->cwd chain, so the agent gets global connections *and* local
+detail at once.
+
+### 9.3 Ownership scoping (the work-repo case)
+A blind full-repo scan is wrong when you own only *part* of a repo. `map-repo.sh` derives your
+scope from **git history** (`git log --author=you` -> the top-level dirs you've actually committed
+to) and scopes the GEN table to those, marking a `Yours` column. The HAND block (the facts a scan
+can't infer) is **seeded from your skills** - any skill whose `description` names the repo is
+matched (the description *is* the registry; no per-repo config). `--full` overrides; no git history
++ no matching skill -> a `TODO` stub, never a blind guess.
+
+### 9.4 Skills link into the map (don't duplicate)
+Once a repo's facts live in `AGENTS.md`, a skill that used to embed "service X is in /foo, configs
+in /bar" should be **trimmed to link** ("layout: see `AGENTS.md`") and keep only its unique
+workflow. One source of truth, no drift between skill-prose and reality, shorter skills.
+
+### 9.5 Reader vs writer - keep them separate
+The inject hook is the *only reader*; `map-repo.sh` / `claude-kit-map-repo` is the *only writer*.
+Don't have skills self-write maps or hooks generate them blind - one writer, one reader, one file.
 
 ---
 
