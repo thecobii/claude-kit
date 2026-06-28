@@ -30,6 +30,7 @@ skills/
 examples/
   AGENTS.md          - a filled workspace-map router (with an Always/Ask/Never boundaries block)
   BOOT.md            - a filled boot-brief digest
+  CLAUDE.md          - a lean global entrypoint: a PRIVATE block + top rule + per-area summary + @-imports of the slices
 ```
 
 ## Scope: principles, adapt to your project
