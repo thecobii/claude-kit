@@ -26,7 +26,7 @@ install/
   claude-kit-maintain.md   - (maintainers) promote your evolving local config back into the kit, scrubbed
 skills/
   claude-kit-brainstorm.md - decision cascade: complexity gate -> fan by angle -> synthesize -> decision table
-  verify-rules.md          - strict rules-compliance gate for CODE: checklist vs rules/*, every finding cites a rule
+  claude-kit-verify-rules.md - strict rules-compliance gate for CODE: checklist vs rules/*, every finding cites a rule
 examples/
   AGENTS.md          - a filled workspace-map router (with an Always/Ask/Never boundaries block)
   BOOT.md            - a filled boot-brief digest

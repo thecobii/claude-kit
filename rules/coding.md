@@ -14,6 +14,11 @@ human takes the final decision.
 **Simplicity.** The minimum code that solves it. No speculative features, abstractions, or
 flexibility; no error handling for impossible cases. 200 lines that could be 50 -> rewrite.
 
+**No dead code.** Don't ship what nothing uses: no unused functions/vars/imports/params you
+introduce, no unreachable branches, no commented-out code kept "just in case" (version control
+remembers - delete it). Remove anything your change leaves orphaned. Pre-existing/unrelated dead
+code -> flag it, don't delete it (see Surgical).
+
 **Surgical.** Touch only what's asked; clean up only your own mess. Don't improve or refactor
 adjacent code, comments, or formatting. Match existing style even if you'd do it differently.
 Unrelated dead code -> mention it, don't delete it. Remove only the imports/vars your change
@@ -32,6 +37,12 @@ beats rewrite - check the shared design system, shared contracts, and existing u
 writing new code; repeated logic -> one named helper. Fewest lines that read clearly; if it
 sprawls it's probably wrong. One clear path per action - no duplicate entry points; merge
 surfaces that do the same job (duplicated UX is a duplicated-code defect).
+
+**No single-use locals.** A value read exactly once -> inline it; assign a named variable only
+when it's reused (twice or more). A single-use local that wraps *much logic* is a smell - extract
+a named function instead of parking it in a throwaway var. One exception: a name that genuinely
+clarifies an otherwise-opaque expression (rare - if you reach for it often, the expression itself
+is too complex). Don't inline into an unreadable one-liner; readability still wins.
 
 **No magic strings/numbers (non-negotiable).** No bare meaningful literals scattered through
 the code. Hoist every key, route, config value, and repeated or significant string-or-number to
