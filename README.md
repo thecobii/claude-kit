@@ -19,7 +19,8 @@ patterns/
   workspace-map-playbook.md    - a generated AGENTS.md router kept honest by a --check hook
   boot-brief.md                - distill standing docs into one read-first digest with a staleness check
 install/
-  SETUP.md           - the integration skill: safely merge the kit into a target project
+  SETUP.md           - merge the kit INTO a target project (adopt the rules/patterns)
+  audit.md           - lint a project's OWN skills/docs against the kit rules + propose lean rewrites
   kit-sync.md        - (maintainers) promote your evolving local config back into the kit, scrubbed
 ```
 
