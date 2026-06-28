@@ -109,11 +109,6 @@ interactive feature gets loading / empty / error / success states plus keyboard 
 design system, no native `prompt`/`confirm`/`alert`, prefer data-driven pickers over free text.
 Reach for the polished option unasked.
 
-**Dates & times (display).** Everywhere user-facing: date `dd.mm.yyyy`, time 24h `HH:mm`
-(combined `dd.mm.yyyy HH:mm`); never ISO, US, or locale formats in displayed output. One
-reusable formatter/component in the shared design system, never hand-rolled per app. Store
-timestamps as ISO-8601 internally; format only at display.
-
 **Capture every standing rule (don't let it live only in chat).** When the human states a
 standing preference or correction ("always", "from now on", "make a rule", "I prefer",
 "avoid X"), persist it to the right doc *that turn*, not just for the current chat. A rule that
