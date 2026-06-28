@@ -13,7 +13,9 @@ config and updates the kit, with a hard safety gate so nothing personal can leak
 
 ## Steps
 1. **DIFF** - for each kit `rules/*` and `patterns/*` file, compare against its local source; list
-   what changed (or is new / was removed) locally since the last sync.
+   what changed (or is new / was removed) locally since the last sync. Match local<->kit by the
+   scrub map's `filemap` (e.g. local `comms.md` <-> kit `communication.md`), NOT by filename - a
+   renamed file matched by name reads as a false add + delete.
 2. **SCRUB** - apply `.kit-scrub.local.json` to every changed/new chunk: `replace` real tokens with
    placeholders, drop lines matching `remove_lines_matching` (hosts, IPs, infra, project names).
 3. **SAFETY GATE (hard)** - grep the resulting kit content for every term in the map's `deny` list.
