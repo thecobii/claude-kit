@@ -30,9 +30,25 @@ agent, not just for humans. Apply these to every agent-facing surface:
   state, not an error.
 - **Content-first + next-step hints.** On no args, show live data, not help text; end output with
   the likely next command.
+- **Combine multi-step operations.** If the agent always does A-then-B, ship one command that does
+  both and returns B's result (`open --query` = navigate+snapshot+filter in one call; `deploy --wait`
+  = trigger+poll+final status). Each merge is one fewer round-trip. *AXI's browser tool cut a 9-turn
+  extraction to 2 this way.*
+- **Caller-filtered output (`--query` / `--fields`).** Let the caller name the slice it wants and
+  return only that - every command becomes a targeted view. Lean by default; `--fields x,y` or
+  `--query term` for more.
+- **Truncate long output, with an escape hatch.** Cap big lists/blobs by default (first N + "...M
+  more, use `--all`"); never dump 10k tokens the agent must scroll. The flag keeps it complete when needed.
+- **Shell-composable.** Emit clean line-oriented text so the agent can pipe through `grep`/`head`/`jq`
+  to filter further - don't force a bespoke query language for simple slicing.
 
-Don't: blanket-adopt a new wire format - it only pays on large *uniform* tabular payloads; on
-small or nested data it's churn for no gain. Don't build aggregate endpoints speculatively.
+Don't: blanket-adopt a new wire format (e.g. TOON) - it only pays on large *uniform* tabular
+payloads; on small or nested data it's churn for no gain. Don't build aggregate endpoints speculatively.
+
+> Source: these are the **AXI** (Agent eXperience Interface) principles - [axi.md](https://axi.md),
+> externally benchmarked (425 GitHub-API + 490 browser runs) at ~100% success with lower cost/latency
+> than raw CLI or MCP. Adopt the *shape*; the reference CLIs (`gh-axi`, `chrome-devtools-axi`) are the
+> creator's tools, not drop-ins for Claude Code.
 
 ## 2. Preview / visual verification protocol
 
