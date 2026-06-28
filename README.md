@@ -24,6 +24,8 @@ install/
   SETUP.md           - merge the kit INTO a target project (adopt the rules/patterns)
   audit.md           - lint a project's OWN skills/docs against the kit rules + propose lean rewrites
   kit-sync.md        - (maintainers) promote your evolving local config back into the kit, scrubbed
+skills/
+  brainstorm.md      - decision cascade: complexity gate -> fan by angle -> synthesize -> decision table
 examples/
   AGENTS.md          - a filled workspace-map router (with an Always/Ask/Never boundaries block)
   BOOT.md            - a filled boot-brief digest
