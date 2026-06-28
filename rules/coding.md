@@ -43,7 +43,20 @@ inline - don't over-abstract a genuine one-off. Named constant beats magic liter
 **Self-documenting code (comments default none).** Name functions and variables so clearly the
 code reads without comments - consistent, intention-revealing names. A comment that restates
 *what* the code does is a defect: delete it and fix the name instead. Keep only a one-line *why*
-for genuinely non-obvious intent. The bar is near-zero comments.
+for genuinely non-obvious intent. The bar is near-zero comments. **Templates, starters, and
+example code are not an exception** - they get near-zero comments too; onboarding/how-to/usage
+explanation lives in the README or `docs/`, never as instructional inline comments (no "add code
+here" pointers, no step-by-step comment blocks, no duplicating docs into code). "It's a template
+others copy" is not a license to annotate.
+
+**Organize by concern (placement).** Put each thing in the file where it belongs; don't pile
+unrelated code into one file just because the cursor is already there. One file = one clear
+responsibility (entry/bootstrap, middleware, a domain area, helpers). A file that mixes concerns
+-> split it into focused siblings. But don't over-split: no file-per-function, no speculative
+package/folder layering before a file earns it. Splitting one package into a few focused files is
+free and expected; deep layering is not. Ask "where does this belong?" *as* you add code, not as
+an afterthought cleanup - lazy placement (everything in `main`/`index`) is a defect, same as a
+missing split.
 
 **Minimal surface (non-negotiable).** UI and code both say the minimum. No explanatory, helper,
 or instructional UI copy where the meaning is already obvious (no "pick one" hints, verbose
