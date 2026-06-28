@@ -1,4 +1,6 @@
-# kit-sync - promote your local config into claude-kit (on demand)
+# claude-kit-maintain
+
+**Promote your evolving local config UP into the kit** - re-scrub the changed rules/patterns and gate on a deny-list so nothing personal leaks, then update the kit files. (Formerly "kit-sync".)
 
 Run this **by wish** when you've improved your local rules/patterns/skills and want the public
 kit to catch up. It does NOT run automatically - you invoke it. It re-scrubs your evolving local

@@ -1,5 +1,5 @@
 {
-  "_note": "Copy to .kit-scrub.local.json (gitignored) and fill with YOUR real values. Used only by install/kit-sync.md; never committed.",
+  "_note": "Copy to .kit-scrub.local.json (gitignored) and fill with YOUR real values. Used only by install/claude-kit-maintain.md; never committed.",
   "filemap": {
     "<local-rule-file>": "<kit-rule-file>",
     "comms.md": "communication.md"

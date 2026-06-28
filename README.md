@@ -21,11 +21,11 @@ patterns/
   workspace-map-playbook.md    - a generated AGENTS.md router kept honest by a --check hook
   boot-brief.md                - distill standing docs into one read-first digest with a staleness check
 install/
-  SETUP.md           - merge the kit INTO a target project (adopt the rules/patterns)
-  audit.md           - lint a project's OWN skills/docs against the kit rules + propose lean rewrites
-  kit-sync.md        - (maintainers) promote your evolving local config back into the kit, scrubbed
+  claude-kit-setup.md      - merge the kit INTO a target project (adopt the rules/patterns)
+  claude-kit-audit.md      - lint a project's OWN skills/docs against the kit rules + propose lean rewrites
+  claude-kit-maintain.md   - (maintainers) promote your evolving local config back into the kit, scrubbed
 skills/
-  brainstorm.md      - decision cascade: complexity gate -> fan by angle -> synthesize -> decision table
+  claude-kit-brainstorm.md - decision cascade: complexity gate -> fan by angle -> synthesize -> decision table
 examples/
   AGENTS.md          - a filled workspace-map router (with an Always/Ask/Never boundaries block)
   BOOT.md            - a filled boot-brief digest
@@ -40,7 +40,7 @@ and *why*, deliberately free of any one project's stack, infra, or names. Adapt 
 ## Quickstart
 
 - **Your own repo:** add as a submodule, then import the rule files into your agent config (below).
-- **A work / foreign repo:** run [`install/SETUP.md`](install/SETUP.md) - it merges the kit in without clobbering the project's existing rules.
+- **A work / foreign repo:** run [`install/claude-kit-setup.md`](install/claude-kit-setup.md) - it merges the kit in without clobbering the project's existing rules.
 - **Adapt, don't copy blindly:** these are principles; swap in your stack's specifics, keep the shape.
 
 ## Install
@@ -71,7 +71,7 @@ auto-loaded). For Claude Code, add to your `CLAUDE.md`:
 
 **2. A foreign or work repo (the merge skill).** When the target already has its own
 `CLAUDE.md` / `AGENTS.md` / rules, do **not** blast over them. Run the integration skill in
-[`install/SETUP.md`](install/SETUP.md): it inventories what's there, classifies each kit item
+[`install/claude-kit-setup.md`](install/claude-kit-setup.md): it inventories what's there, classifies each kit item
 (adopt / keep-theirs / merge / conflict / skip), shows you an approval-gated merge table, then
 applies only what you approve - inside delimited blocks that leave the project's own lines
 untouched, pinned to a kit commit SHA for clean future updates.
@@ -84,7 +84,7 @@ whole value is that it's portable and shareable.
 
 ## Keeping it current
 The kit is a curated snapshot, not a live mirror of anyone's config. Maintainers update it from
-their own evolving setup via [`install/kit-sync.md`](install/kit-sync.md) - run on demand; it
+their own evolving setup via [`install/claude-kit-maintain.md`](install/claude-kit-maintain.md) - run on demand; it
 re-scrubs and gates on a deny-list so nothing personal can leak in.
 
 ## License

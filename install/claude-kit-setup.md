@@ -1,4 +1,6 @@
-# SETUP - the claude-kit integration skill
+# claude-kit-setup
+
+**Merge the kit INTO a target project** - inventory the project's existing rules, classify each kit item (adopt / keep-theirs / merge / conflict / skip / defer / bloat), show an approval-gated table, then apply only what's approved inside managed blocks, SHA-pinned for clean updates.
 
 Run this skill when claude-kit has been dropped into a **target project that already has its own**
 `CLAUDE.md` / `AGENTS.md` / rules / skills. It safely merges the kit's rules and patterns into the

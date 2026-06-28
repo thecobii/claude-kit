@@ -1,4 +1,6 @@
-# audit - lint your own skills & docs against the kit rules
+# claude-kit-audit
+
+**Lint a project's OWN skills/docs against the kit rules** - score each file against the rules, flag verbose / rule-breaking ones, propose lean rewrites; approval-gated, report-only in a repo you don't own.
 
 Run this to check a project's OWN skills/docs (CLAUDE.md, AGENTS.md, skill files, rule files)
 against the kit's `rules/*` and propose lean rewrites. Distinct from the other two skills:

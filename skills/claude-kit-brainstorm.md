@@ -1,4 +1,6 @@
-# brainstorm - the decision cascade (skill)
+# claude-kit-brainstorm
+
+**Run a decision cascade for a non-trivial decision** - complexity gate -> fan 2-3 agents by distinct angle -> synthesize against ground truth -> dual-verify if irreversible -> decision table, human decides.
 
 The invokable form of the "decision rigor" rule (`rules/coding.md`). For a non-trivial decision,
 don't assert - prove, then let the human decide. Invoke by name (e.g. `/brainstorm <topic>`).
